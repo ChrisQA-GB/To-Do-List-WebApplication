@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -16,43 +19,51 @@ public class PokeTasks {
 	
 	@Id // Auto-incrementing
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int taskId;
+	private int taskId; // Auto-Generated Task Id for filteration
+	
+	@ManyToOne(targetEntity = PokeList.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_plist_id") // indicates the Duck is the owner of the relationship
+	private PokeList pokeList;
+	
 	
 	@Column(name = "Poke-Task", unique = true)
 	@NotNull
-	private String pokeTask;
+	private String pokeTask; // Title of their Task 
 	
 	@NotNull
-	private String pokeTaskDescription;
+	private String pokeTaskDescription; // User writes brief of what their task is
 	
 	@NotNull
 	@Min(0)
 	@Max(10)
-	private int difficulty;
+	private int difficulty; // User can set how hard their task is
 	
 	@NotNull
-	private Date completionDate; 
+	private Date date; // Goal is to create date and tickbox 
+	
+	@NotNull
+	private boolean completedTickBox; // This would be for creating the tickbox
 	
 	public PokeTasks() {
 		
 	}
 	
-	public PokeTasks(String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate) {
+	public PokeTasks(String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate, boolean completedTickBox) {
 		super();
 		this.pokeTask = pokeTask;
 		this.pokeTaskDescription = pokeTaskDescription;
 		this.difficulty = difficulty;
-		this.completionDate = completionDate; 
+		this.date = completionDate; 
 		
 	}
 	
-	public PokeTasks(int taskId, String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate) {
+	public PokeTasks(int taskId, String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate, boolean completedTickBox) {
 		super();
 		this.taskId = taskId;
 		this.pokeTask = pokeTask;
 		this.pokeTaskDescription = pokeTaskDescription;
 		this.difficulty = difficulty;
-		this.completionDate = completionDate; 
+		this.date = completionDate; 
 		
 }
 
@@ -87,20 +98,29 @@ public class PokeTasks {
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
-
-	public Date getCompletionDate() {
-		return completionDate;
+		
+	public Date getDate() {
+		return date;
 	}
 
-	public void setCompletionDate(Date completionDate) {
-		this.completionDate = completionDate;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public boolean isCompletedTickBox() {
+		return completedTickBox;
+	}
+
+	public void setCompletedTickBox(boolean completedTickBox) {
+		this.completedTickBox = completedTickBox;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((completionDate == null) ? 0 : completionDate.hashCode());
+		result = prime * result + (completedTickBox ? 1231 : 1237);
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + difficulty;
 		result = prime * result + ((pokeTask == null) ? 0 : pokeTask.hashCode());
 		result = prime * result + ((pokeTaskDescription == null) ? 0 : pokeTaskDescription.hashCode());
@@ -117,10 +137,12 @@ public class PokeTasks {
 		if (getClass() != obj.getClass())
 			return false;
 		PokeTasks other = (PokeTasks) obj;
-		if (completionDate == null) {
-			if (other.completionDate != null)
+		if (completedTickBox != other.completedTickBox)
+			return false;
+		if (date == null) {
+			if (other.date != null)
 				return false;
-		} else if (!completionDate.equals(other.completionDate))
+		} else if (!date.equals(other.date))
 			return false;
 		if (difficulty != other.difficulty)
 			return false;
@@ -138,5 +160,6 @@ public class PokeTasks {
 			return false;
 		return true;
 	}
-
 }
+
+	
