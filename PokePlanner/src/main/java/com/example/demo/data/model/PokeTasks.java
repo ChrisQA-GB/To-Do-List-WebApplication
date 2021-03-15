@@ -42,30 +42,36 @@ public class PokeTasks {
 	private Date date; // Goal is to create date and tickbox 
 	
 	@NotNull
-	private boolean completedTickBox; // This would be for creating the tickbox
+	private boolean completedTickBox; // This would be for creating the tickbox (May move to a new class, TaskDetails?
 	
 	public PokeTasks() {
 		
 	}
-	
-	public PokeTasks(String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate, boolean completedTickBox) {
+		
+public PokeTasks(PokeList pokeList,  String pokeTask,  String pokeTaskDescription,
+			int difficulty,  Date date, boolean completedTickBox) {
 		super();
+		this.pokeList = pokeList;
 		this.pokeTask = pokeTask;
 		this.pokeTaskDescription = pokeTaskDescription;
 		this.difficulty = difficulty;
-		this.date = completionDate; 
-		
+		this.date = date;
+		this.completedTickBox = completedTickBox;
 	}
-	
-	public PokeTasks(int taskId, String pokeTask, String pokeTaskDescription, int difficulty, Date completionDate, boolean completedTickBox) {
-		super();
-		this.taskId = taskId;
-		this.pokeTask = pokeTask;
-		this.pokeTaskDescription = pokeTaskDescription;
-		this.difficulty = difficulty;
-		this.date = completionDate; 
-		
+
+
+public PokeTasks(int taskId, PokeList pokeList, String pokeTask, String pokeTaskDescription,
+		 int difficulty, Date date,  boolean completedTickBox) {
+	super();
+	this.taskId = taskId;
+	this.pokeList = pokeList;
+	this.pokeTask = pokeTask;
+	this.pokeTaskDescription = pokeTaskDescription;
+	this.difficulty = difficulty;
+	this.date = date;
+	this.completedTickBox = completedTickBox;
 }
+
 
 	public int getTaskId() {
 		return taskId;

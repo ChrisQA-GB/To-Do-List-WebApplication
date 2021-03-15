@@ -21,13 +21,13 @@ public class PokeList {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pokeListId;
 	
-	@OneToMany(mappedBy = "PokeList", fetch = FetchType.LAZY, orphanRemoval = true)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<PokeTasks> pokeTasks;
-	
 	@Column(name = "PokeList", unique = true)
 	@NotNull
 	private String pokeList;
+	
+	@OneToMany(mappedBy = "PokeList", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private List<PokeTasks> pokeTasks;
 	
 	
 	public PokeList() {
@@ -61,12 +61,21 @@ public class PokeList {
 		this.pokeList = pokeList;
 	}
 
+	public List<PokeTasks> getPokeTasks() {
+		return pokeTasks;
+	}
+
+	public void setPokeTasks(List<PokeTasks> pokeTasks) {
+		this.pokeTasks = pokeTasks;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((pokeList == null) ? 0 : pokeList.hashCode());
 		result = prime * result + pokeListId;
+		result = prime * result + ((pokeTasks == null) ? 0 : pokeTasks.hashCode());
 		return result;
 	}
 
@@ -86,10 +95,16 @@ public class PokeList {
 			return false;
 		if (pokeListId != other.pokeListId)
 			return false;
+		if (pokeTasks == null) {
+			if (other.pokeTasks != null)
+				return false;
+		} else if (!pokeTasks.equals(other.pokeTasks))
+			return false;
 		return true;
 	}
 	
-	
+
+
 	
 	
 
