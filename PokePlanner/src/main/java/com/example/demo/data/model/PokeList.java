@@ -9,24 +9,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-@Entity 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+@Table(name = "pokeList")
 public class PokeList {
 	
 	@Id // Auto-incrementing
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "pokelist_id")
 	private int pokeListId;
 	
-	@Column(name = "PokeList", unique = true)
+	@Column(name = "pokeList_name", unique = true)
 	@NotNull
 	private String pokeList;
 	
-	@OneToMany(mappedBy = "PokeList", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "pokeList", fetch = FetchType.LAZY )
 	@OnDelete(action = OnDeleteAction.CASCADE)
+//	@JsonManagedReference// aternate way of solving recursion without DTO
 	private List<PokeTasks> pokeTasks;
 	
 	
@@ -61,10 +68,12 @@ public class PokeList {
 		this.pokeList = pokeList;
 	}
 
+//	@JsonIgnore
 	public List<PokeTasks> getPokeTasks() {
 		return pokeTasks;
 	}
 
+//	@JsonIgnore
 	public void setPokeTasks(List<PokeTasks> pokeTasks) {
 		this.pokeTasks = pokeTasks;
 	}

@@ -7,5 +7,6 @@ import com.example.demo.data.model.PokeList;
 public interface PokeListRespository extends JpaRepository<PokeList, Integer> {
 	
 	
+	
 
 }
