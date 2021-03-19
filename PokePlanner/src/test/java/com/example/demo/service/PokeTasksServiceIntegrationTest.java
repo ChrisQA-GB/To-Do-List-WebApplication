@@ -14,11 +14,9 @@ import com.example.demo.DTO.PokeTaskDTO;
 import com.example.demo.data.model.PokeTasks;
 import com.example.demo.data.respository.PokeTaskRespository;
 import com.example.demo.mappper.PokeTasksMapper;
-import com.example.duckdemo.data.model.Duck;
-import com.example.duckdemo.dto.DuckDTO;
 
 @SpringBootTest
-public class PokeTasksIntegrationTest {
+public class PokeTasksServiceIntegrationTest {
 	
 
 	@Autowired
@@ -40,6 +38,7 @@ public class PokeTasksIntegrationTest {
 	public void init() {
 		// setup our valid duck data to be saved to the db
 		validPokeTasks = new PokeTasks();
+		validPokeTaskDTO = new PokeTaskDTO();
 		
 		// initialise our lists
 		pokeTasks = new ArrayList<PokeTasks>();
@@ -56,7 +55,7 @@ public class PokeTasksIntegrationTest {
 		
 		// add the saved duck and corresponding DTO to the relevant lists
 		pokeTasks.add(validPokeTasks);
-		PokeTaskDTO.add(validPokeTaskDTO);
+		pokeTaskDTO.add(validPokeTaskDTO);
 	}
 	
 	@Test
@@ -68,9 +67,4 @@ public class PokeTasksIntegrationTest {
 		assertThat(pokeTaskDTO).isEqualTo(pokeTasksInDb);
 	}
 	
-}
-
-	
-	
-
 }
