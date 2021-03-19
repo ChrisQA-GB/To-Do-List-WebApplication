@@ -28,7 +28,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-
+<!-- https://mvnrepository.com/artifact/nl.jqno.equalsverifier/equalsverifier  Adding this Plugin for EqualsVerifer for UnitTesting--> 
+		<dependency>
+			<groupId>nl.jqno.equalsverifier</groupId>
+			<artifactId>equalsverifier</artifactId>
+			<version>3.5.5</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.modelmapper</groupId>

@@ -2,8 +2,6 @@ package com.example.demo.DTO;
 
 import java.util.List;
 
-import com.example.demo.data.model.PokeTasks;
-
 public class PokeListDTO {
 	
 	private int pokeListId;
@@ -23,9 +21,17 @@ public class PokeListDTO {
 		this.pokeTasks = pokeTasks;
 	}
 
+	
+	public PokeListDTO(String pokeList) {
+		super();
+		this.pokeList = pokeList;
+	}
+	
 	public int getPokeListId() {
 		return pokeListId;
 	}
+	
+	
 
 	public void setPokeListId(int pokeListId) {
 		this.pokeListId = pokeListId;
@@ -71,8 +77,8 @@ public class PokeListDTO {
 				return false;
 		} else if (!pokeList.equals(other.pokeList))
 			return false;
-		if (pokeListId != other.pokeListId)
-			return false;
+	if (pokeListId != other.pokeListId)
+			return false;  
 		if (pokeTasks == null) {
 			if (other.pokeTasks != null)
 				return false;

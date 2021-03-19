@@ -1,10 +1,5 @@
 package com.example.demo.DTO;
 
-import java.util.List;
-
-import com.example.demo.data.model.PokeList;
-import com.example.demo.data.model.Status;
-
 public class PokeTaskDTO {
 	
 	private int taskId;
@@ -19,9 +14,7 @@ public class PokeTaskDTO {
 	
 	private String date;
 	
-	private boolean completedTickBox;
-	
-	private Status status; 
+	private boolean completedTickBox; 
 	
 //	private List<PokeTaskDTO> pokeTaskDTO;
 
@@ -29,12 +22,10 @@ public class PokeTaskDTO {
 	
 	}
 
-	public PokeTaskDTO(int taskId, String pokeTask, String pokeTaskDescription, int difficulty,
-			String date, boolean completedTickBox) {
+	public PokeTaskDTO(int taskId, String pokeTask, String pokeTaskDescription, int difficulty, String date,
+			boolean completedTickBox) {
 		super();
-		
 		this.taskId = taskId;
-//		this.pokeList = pokeList;
 		this.pokeTask = pokeTask;
 		this.pokeTaskDescription = pokeTaskDescription;
 		this.difficulty = difficulty;
@@ -42,19 +33,14 @@ public class PokeTaskDTO {
 		this.completedTickBox = completedTickBox;
 	}
 
-	public PokeTaskDTO(int taskId, String pokeTask, String pokeTaskDescription, int difficulty,
-			String date, boolean completedTickBox, Status status) {
-		
+	public PokeTaskDTO(String pokeTask, String pokeTaskDescription, int difficulty, String date,
+			boolean completedTickBox) {
 		super();
-		this.taskId = taskId;
-//		this.pokeList = pokeList; Keeping this in as a comment to remind myself of the massive error this caused
 		this.pokeTask = pokeTask;
 		this.pokeTaskDescription = pokeTaskDescription;
 		this.difficulty = difficulty;
 		this.date = date;
 		this.completedTickBox = completedTickBox;
-		this.status = status;
-//		this.pokeTaskDTO = pokeTaskDTO;
 	}
 
 	public int getTaskId() {
@@ -64,14 +50,6 @@ public class PokeTaskDTO {
 	public void setTaskId(int taskId) {
 		this.taskId = taskId;
 	}
-
-//	public PokeList getPokeList() {
-//		return pokeList;
-//	}
-//
-//	public void setPokeList(PokeList pokeList) {
-//		this.pokeList = pokeList;
-//	}
 
 	public String getPokeTask() {
 		return pokeTask;
@@ -113,14 +91,6 @@ public class PokeTaskDTO {
 		this.completedTickBox = completedTickBox;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -130,7 +100,6 @@ public class PokeTaskDTO {
 		result = prime * result + difficulty;
 		result = prime * result + ((pokeTask == null) ? 0 : pokeTask.hashCode());
 		result = prime * result + ((pokeTaskDescription == null) ? 0 : pokeTaskDescription.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + taskId;
 		return result;
 	}
@@ -163,8 +132,6 @@ public class PokeTaskDTO {
 				return false;
 		} else if (!pokeTaskDescription.equals(other.pokeTaskDescription))
 			return false;
-		if (status != other.status)
-			return false;
 		if (taskId != other.taskId)
 			return false;
 		return true;
@@ -174,7 +141,9 @@ public class PokeTaskDTO {
 	public String toString() {
 		return "PokeTaskDTO [taskId=" + taskId + ", pokeTask=" + pokeTask + ", pokeTaskDescription="
 				+ pokeTaskDescription + ", difficulty=" + difficulty + ", date=" + date + ", completedTickBox="
-				+ completedTickBox + ", status=" + status + "]";
+				+ completedTickBox + "]";
 	}
 
 }
+	
+	

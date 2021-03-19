@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.example.demo.DTO.PokeListDTO;
 import com.example.demo.data.model.PokeList;
 import com.example.demo.data.respository.PokeListRespository;
