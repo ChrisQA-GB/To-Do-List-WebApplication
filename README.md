@@ -12,8 +12,7 @@ This project has full CRUD functionality within the Java and Spring aspect.
 
 ## Getting Started
 
-These instructions will enable you a cloned copy of the project, which will be up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
+These instructions will enable you a cloned copy of the project, which will be up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system. Using the PokePlanner-0.0.1-SNAPSHOT.jar file that is provided in his repo will start create a connection to the localhost:8080 server. From here connect to the front end using the html files provided with the FrontEnd folder and ensure that you have downloaded LiveServer to ensure ease of use while using this project.
 ### Prerequisites
 
 What things you need to install the software and how to install them:
