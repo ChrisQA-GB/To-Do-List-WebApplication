@@ -128,7 +128,7 @@ public class PokeTasksControllerIntegrationTest {
 				MockMvcRequestBuilders.request(HttpMethod.PUT, "/pokeTaskId/1");
 		
 		mockRequest.contentType(MediaType.APPLICATION_JSON); // Mime-Type
-		mockRequest.content(objectMapper.writeValueAsString(expectedPokeTaskDTO));
+		mockRequest.content(objectMapper.writeValueAsString(pokeTaskDTO));
 		
 		
 		mockRequest.accept(MediaType.APPLICATION_JSON);
@@ -136,7 +136,7 @@ public class PokeTasksControllerIntegrationTest {
 		ResultMatcher statusMatcher = MockMvcResultMatchers.status().isOk();
 		
 		ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-				.json(objectMapper.writeValueAsString(expectedPokeTaskDTO)); 
+				.json(objectMapper.writeValueAsString(pokeTaskDTO)); 
 				
 		mvc.perform(mockRequest)
 		   .andExpect(statusMatcher)

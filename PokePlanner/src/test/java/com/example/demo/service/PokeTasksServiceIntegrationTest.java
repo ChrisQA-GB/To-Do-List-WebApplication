@@ -61,13 +61,13 @@ public class PokeTasksServiceIntegrationTest {
 		assertThat(pokeTaskDTO).isEqualTo(pokeTasksInDb);
 	}
 	
-	@Disabled
+/*	@Disabled
 	@Test
 	public void readByIdTest() {
 		PokeTaskDTO pokeTasksInDb = pokeTasksService.readById(pokeTasksInDb.getTaskId());
 		
 		assertThat(pokeTaskDTO).isEqualTo(pokeTasksInDb.getTaskId());
-	}
+	} */
 
 	// UPDATE SERVICE TASK TEST
 	@Test
