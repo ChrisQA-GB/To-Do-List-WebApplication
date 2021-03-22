@@ -9,7 +9,7 @@ public class PokePlannerApplication {
 
 	// Setting the Applciation Context through "=" notation. 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(PokePlannerApplication.class, args);
+		SpringApplication.run(PokePlannerApplication.class, args);
 	}
 
 }

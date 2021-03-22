@@ -20,7 +20,7 @@ public class PokeTasksMapper {
 	public PokeTaskDTO mapToDTO(PokeTasks pokeTasks) {
 		return this.modelMapper.map(pokeTasks, PokeTaskDTO.class);
 	}
-	private PokeTasks mapToPokeTasks(PokeTaskDTO pokeTaskDTO) {
+	public PokeTasks mapToPokeTasks(PokeTaskDTO pokeTaskDTO) {
 		return this.modelMapper.map(pokeTaskDTO, PokeTasks.class);
 	}
 }

@@ -43,14 +43,12 @@ public class PokeTasks {
 	
 	private boolean completedTickBox; // This would be for creating the tickbox (May move to a new class, TaskDetails?
 	
-	private Status status; 
-	
 	
 	public PokeTasks() {
 		}
 
 	public PokeTasks(int taskId, PokeList pokeList,  String pokeTask, String pokeTaskDescription,
-			 int difficulty, String date, boolean completedTickBox, Status status) {
+			 int difficulty, String date, boolean completedTickBox) {
 		super();
 		this.taskId = taskId;
 		this.pokeList = pokeList;
@@ -59,11 +57,11 @@ public class PokeTasks {
 		this.difficulty = difficulty;
 		this.date = date;
 		this.completedTickBox = completedTickBox;
-		this.status = status;
+
 	}
 
 	public PokeTasks(PokeList pokeList, String pokeTask, String pokeTaskDescription,
-			int difficulty, String String, boolean completedTickBox, Status status) {
+			int difficulty, String date, boolean completedTickBox) {
 		super();
 		this.pokeList = pokeList;
 		this.pokeTask = pokeTask;
@@ -71,7 +69,17 @@ public class PokeTasks {
 		this.difficulty = difficulty;
 		this.date = date;
 		this.completedTickBox = completedTickBox;
-		this.status = status;
+
+	}
+	
+
+	public PokeTasks(String pokeTask, String pokeTaskDescription,int difficulty, String date, boolean completedTickBox) {
+		super();
+		this.pokeTask = pokeTask;
+		this.pokeTaskDescription = pokeTaskDescription;
+		this.difficulty = difficulty;
+		this.date = date;
+		this.completedTickBox = completedTickBox;
 	}
 
 	public int getTaskId() {
@@ -130,13 +138,6 @@ public class PokeTasks {
 		this.completedTickBox = completedTickBox;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 
 	@Override
 	public int hashCode() {
@@ -148,8 +149,6 @@ public class PokeTasks {
 		result = prime * result + ((pokeList == null) ? 0 : pokeList.hashCode());
 		result = prime * result + ((pokeTask == null) ? 0 : pokeTask.hashCode());
 		result = prime * result + ((pokeTaskDescription == null) ? 0 : pokeTaskDescription.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + taskId;
 		return result;
 	}
 
@@ -186,10 +185,8 @@ public class PokeTasks {
 				return false;
 		} else if (!pokeTaskDescription.equals(other.pokeTaskDescription))
 			return false;
-		if (status != other.status)
-			return false;
-		if (taskId != other.taskId)
-			return false;
+	/*	if (taskId != other.taskId)
+			return false; */
 		return true;
 	}
 

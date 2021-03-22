@@ -76,7 +76,7 @@ public class PokeTasksController {
 
 	@DeleteMapping("/{taskId}")
 	public ResponseEntity<Boolean> deletePokeTask(@PathVariable("taskId") int id) {
-		return new ResponseEntity<Boolean>(pokeTasksService.deletePokeTasks(id), HttpStatus.OK);
+		return new ResponseEntity<Boolean>(pokeTasksService.deletePokeTasks(id), HttpStatus.NO_CONTENT);
 	}
 
 }

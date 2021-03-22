@@ -15,9 +15,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "pokeList")
 public class PokeList {
@@ -28,12 +25,11 @@ public class PokeList {
 	private int pokeListId;
 	
 	@Column(name = "pokeList_name", unique = true)
-	@NotNull
 	private String pokeList;
 	
 	@OneToMany(mappedBy = "pokeList", fetch = FetchType.LAZY )
 	@OnDelete(action = OnDeleteAction.CASCADE)
-//	@JsonManagedReference// aternate way of solving recursion without DTO
+//	@JsonManagedReference// alternate way of solving recursion without DTO
 	private List<PokeTasks> pokeTasks;
 	
 	
@@ -50,6 +46,13 @@ public class PokeList {
 		super();
 		this.pokeListId = pokeListId;
 		this.pokeList = pokeList;
+	}
+
+	public PokeList(int pokeListId, String pokeList, List<PokeTasks> pokeTasks) {
+		super();
+		this.pokeListId = pokeListId;
+		this.pokeList = pokeList;
+		this.pokeTasks = pokeTasks;
 	}
 
 	public int getPokeListId() {
@@ -83,7 +86,7 @@ public class PokeList {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((pokeList == null) ? 0 : pokeList.hashCode());
-		result = prime * result + pokeListId;
+	//	result = prime * result + pokeListId;
 		result = prime * result + ((pokeTasks == null) ? 0 : pokeTasks.hashCode());
 		return result;
 	}
@@ -102,8 +105,8 @@ public class PokeList {
 				return false;
 		} else if (!pokeList.equals(other.pokeList))
 			return false;
-		if (pokeListId != other.pokeListId)
-			return false;
+	/*	if (pokeListId != other.pokeListId)
+			return false; */
 		if (pokeTasks == null) {
 			if (other.pokeTasks != null)
 				return false;
