@@ -25,12 +25,11 @@ public class PokeList {
 	private int pokeListId;
 	
 	@Column(name = "pokeList_name", unique = true)
-	@NotNull
 	private String pokeList;
 	
 	@OneToMany(mappedBy = "pokeList", fetch = FetchType.LAZY )
 	@OnDelete(action = OnDeleteAction.CASCADE)
-//	@JsonManagedReference// aternate way of solving recursion without DTO
+//	@JsonManagedReference// alternate way of solving recursion without DTO
 	private List<PokeTasks> pokeTasks;
 	
 	

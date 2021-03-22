@@ -50,6 +50,7 @@ public class PokeListService {
 		return pokeListMapper.mapToDTO(savedPokeList);
 	}
 
+	@Transactional
 	public PokeListDTO updatePokeList(Integer id, PokeList pokeList) throws EntityNotFoundException {
 		Optional<PokeList> pokeListInDbOpt = pokeListRespository.findById(id);
 		PokeList pokeListInDb;
